@@ -13,6 +13,7 @@ Se aplica arquitectura CQRS para dividir entre consultas y comandos (actualmente
 ## Dependencias
 Se ha utilizado Lombok para generar clases más limpias y organizadas.
 Además se ha utilizado Tomcat como servidor y drivers JDBC para la conexión a la base de datos en memoria H2.
+Implementado en Spring Boot 3.3.4 con Java 21.
 
 ## Seguridad
 IMPORTANTE:
@@ -34,7 +35,7 @@ http://localhost:8080/prices/findPrice
 ## Pruebas
 
 ### Testing unitario
-Se ha usado Mockito y JUnit 4.
+Se ha usado Mockito y JUnit 5.
 100% coverage en el controller y el service (ObtainPriceUseCase && PricesController).
 
 ### Testing de integración
