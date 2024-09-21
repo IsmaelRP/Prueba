@@ -1,0 +1,73 @@
+openapi: 3.0.1
+info:
+  title: Prueba técnica
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Local
+paths:
+  /users/login:
+    post:
+      tags:
+        - users-controller
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserQuery'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseObjObject'
+  /prices/findPrice:
+    get:
+      tags:
+        - prices-controller
+      operationId: findPrice
+      parameters:
+        - name: subsidiary_id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: product_id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: application
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ResponseObjObject'
+components:
+  schemas:
+    UserQuery:
+      type: object
+      properties:
+        user:
+          type: string
+        password:
+          type: string
+    ResponseObjObject:
+      type: object
+      properties:
+        body:
+          type: object
+        msg:
+          type: string
